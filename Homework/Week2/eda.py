@@ -17,7 +17,10 @@ import json
 
 
 def create_dataframe():
-
+    """
+    Loads the data from a CSV file, puts it in a dataframe
+    and set the index to country
+    """
     # Read csv file into pandas dataframe
     df = pd.read_csv('input.csv', usecols=['Country', 'Region',
                     'Pop. Density (per sq. mi.)',
@@ -29,7 +32,10 @@ def create_dataframe():
 
 
 def clean_data(df):
-
+    """
+    Cleans the data. Drops the rows with unknown or NaN values
+    and remove outliers. Suriname is the only significant outlier.
+    """
     # Drop rows with unknown values and clean data
     df = df.dropna()
     df.drop(df[df['GDP ($ per capita) dollars'] == 'unknown'].index, inplace=True)
@@ -44,13 +50,17 @@ def clean_data(df):
                                                  .str.replace(",", ".").astype(float)
     df['GDP ($ per capita) dollars'] = df['GDP ($ per capita) dollars'].astype(float)
 
-    # Remove outliers (only surime with)
+    # Remove outliers (only suriname with 400K GDP)
     df.drop(df[df['GDP ($ per capita) dollars'] == 400000.0].index, inplace=True)
 
     return df
 
 
 def statistics(cleaned_data):
+    """
+    Calculate the statistics of the cleaned data and plot a histogram
+    and boxplot.
+    """
 
     # Calculate mean, median and mode GDP per capita worldwide
     print('Descriptives of GDP per capita worldwide')
@@ -82,6 +92,9 @@ def statistics(cleaned_data):
 
 
 def write_json(cleaned_data):
+    """
+    Writes the cleaned data to a JSON file for further research.
+    """
     # Export dataframe to JSON file
     cleaned_data.to_json('demographics.json', orient='index')
 
@@ -91,6 +104,7 @@ if __name__ == "__main__":
     df = create_dataframe()
 
     cleaned_data = clean_data(df)
-    print(cleaned_data)
+
     statistics(cleaned_data)
+
     write_json(cleaned_data)
