@@ -1,0 +1,18 @@
+Explain the difference between the == operator and the === operator.
+  JavaScript has both strict and type-converting equality comparison. For strict equality the objects being compared must have the same type and:
+  - Two strings are strictly equal when they have the same sequence of characters, same length, and same characters in corresponding positions.
+  - Two numbers are strictly equal when they are numerically equal (have the same number value). NaN is not equal to anything, including NaN. Positive and negative zeros are equal to one another.
+  - Two Boolean operands are strictly equal if both are true or both are false.
+  - Two objects are strictly equal if they refer to the same Object.
+  - Null and Undefined types are == (but not ===). [I.e. (Null==Undefined) is true but (Null===Undefined) is false]
+  
+Explain what a closure is. (Note that JavaScript programs use closures very often)
+  - Being able to reference a specific instance of a local binding in an enclosing scope—is called closure. A function that references bindings from local scopes around it is called a closure.
+
+Explain what higher order functions are.
+ - Functions that operate on other functions, either by taking them as arguments or by returning them, are called higher-order functions.
+ - Higher-order functions allow us to abstract over actions, not just values. They come in several forms.
+
+Explain what a query selector is and give an example line of JavaScript that uses a query selector.
+ - The notation used in style sheets to determine which elements a set of styles apply to—is that we can use this same mini-language as an effective way to find DOM elements.
+ - The querySelectorAll method, which is defined both on the document object and on element nodes, takes a selector string and returns a NodeList containing all the elements that it matches.
