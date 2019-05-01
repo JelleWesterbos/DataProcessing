@@ -1,4 +1,4 @@
 # DataProcessing-
 DataProcessingMinor
 
-https://jellewesterbos.github.io/DataProcessing-/
+https://jellewesterbos.github.io/DataProcessing/
