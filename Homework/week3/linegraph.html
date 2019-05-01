@@ -6,7 +6,7 @@ Show line chart of gathered data using JavaScript and HTML
   -->
 <html>
 <head>
-<title>Page Title</title>
+<title>Plastic production</title>
 </head>
 <body>
     <canvas id="linechart" width="750" height="750"> </canvas>
@@ -18,9 +18,9 @@ txtFile.onreadystatechange = function() {
     if (txtFile.readyState === 4 && txtFile.status == 200) {
         console.log(JSON.parse(txtFile.responseText));
 
+        // Create scales
         var x = createTransform([1950,2015],[100, 650]);
         var y = createTransform([0, 400000000], [650, 100]);
-
 
         var data = JSON.parse(txtFile.responseText);
         const canvas = document.getElementById("linechart");
@@ -72,6 +72,7 @@ function createTransform(domain, range){
 </body>
 <footer>
   <p>Name: Jelle Westerbos</p>
-  <p>Data source <a href="https://ourworldindata.org/plastic-pollution#where-does-plastic-collect-in-the-ocean"> </a></p>
+  <p>Find here the <a href="https://ourworldindata.org/plastic-pollution#where-does-plastic-collect-in-the-ocean"> data source</a></p>
+  <p>In this chart we see the exponential increase in plastic production in the world over the years 1950 - 2018.</p>
 </footer>
 </html>
