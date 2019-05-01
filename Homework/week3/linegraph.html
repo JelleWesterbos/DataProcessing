@@ -9,11 +9,67 @@ Show line chart of gathered data using JavaScript and HTML
 <title>Page Title</title>
 </head>
 <body>
-<canvas> </canvas>
-<script>console.log("Hello world!");</script>
+  <canvas id="linechart" width="750" height="750"> </canvas>
+<script>
 
-<h1>My First Heading</h1>
-<p>My first paragraph.</p>
+var fileName = "global-plastics-production.json";
+var txtFile = new XMLHttpRequest();
+txtFile.onreadystatechange = function() {
+    if (txtFile.readyState === 4 && txtFile.status == 200) {
+        console.log(JSON.parse(txtFile.responseText));
+
+        var x = createTransform([1950,2015],[100, 650]);
+        var y = createTransform([0, 400000000], [650, 100]);
+
+        var data = JSON.parse(txtFile.responseText);
+        const canvas = document.getElementById("linechart");
+        const ctx = canvas.getContext("2d");
+
+        // Chart title
+        ctx.font = "20px Arial";
+        ctx.fillText('World plastic production 1950-2018', 250, 45)
+
+        // Title x axis
+        ctx.fillText('Year', 350, 700);
+
+        // Title y axis
+        ctx.fillText('Plastic production per year', -30, 350);
+
+        // draw x and y
+        ctx.moveTo(100,650);
+        ctx.lineTo(100,100);
+        ctx.moveTo(100,650);
+        ctx.lineTo(650,650);
+        ctx.stroke();
+
+        // draw line from data in chart
+        data.forEach(function(element){
+            ctx.lineTo(x(element["Year"]), y(element["Production"]));
+            ctx.stroke();
+        });
+
+    }
+}
+txtFile.open("GET", fileName);
+txtFile.send();
+
+function createTransform(domain, range){
+    var domain_min = domain[0]
+    var domain_max = domain[1]
+    var range_min = range[0]
+    var range_max = range[1]
+
+    // formulas to calculate the alpha and the beta
+   	var alpha = (range_max - range_min) / (domain_max - domain_min)
+    var beta = range_max - alpha * domain_max
+
+    // returns the function for the linear transformation (y= a * x + b)
+    return function(x){
+      return alpha * x + beta;
+    }
+}
+
+</script>
 
 </body>
 </html>
