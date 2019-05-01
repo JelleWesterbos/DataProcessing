@@ -9,7 +9,7 @@ Show line chart of gathered data using JavaScript and HTML
 <title>Page Title</title>
 </head>
 <body>
-  <canvas id="linechart" width="750" height="750"> </canvas>
+    <canvas id="linechart" width="750" height="750"> </canvas>
 <script>
 
 var fileName = "global-plastics-production.json";
@@ -20,6 +20,7 @@ txtFile.onreadystatechange = function() {
 
         var x = createTransform([1950,2015],[100, 650]);
         var y = createTransform([0, 400000000], [650, 100]);
+
 
         var data = JSON.parse(txtFile.responseText);
         const canvas = document.getElementById("linechart");
@@ -47,7 +48,6 @@ txtFile.onreadystatechange = function() {
             ctx.lineTo(x(element["Year"]), y(element["Production"]));
             ctx.stroke();
         });
-
     }
 }
 txtFile.open("GET", fileName);
@@ -68,8 +68,11 @@ function createTransform(domain, range){
       return alpha * x + beta;
     }
 }
-
 </script>
-
 </body>
+<footer>
+  <p>Name: Jelle Westerbos</p>
+  <p>Data source <a href="https://ourworldindata.org/plastic-pollution#where-does-plastic-collect-in-the-ocean"> </a></p>
+</footer>
+ https://ourworldindata.org/plastic-pollution#where-does-plastic-collect-in-the-ocean
 </html>
