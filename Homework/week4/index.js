@@ -79,7 +79,6 @@ d3.json("plastic.json").then(function(data) {
     xAxisGroup.selectAll('text')
       .attr('transform', 'rotate(-40)')
       .attr('text-anchor', 'end');
-
     })
 
 // event handlers
