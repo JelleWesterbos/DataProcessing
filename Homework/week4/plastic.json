@@ -1,0 +1,9 @@
+[
+  {"Entity": "Global ocean (total)", "Amount": 268950 },
+  {"Entity": "Indian Ocean", "Amount": 59130 },
+  {"Entity": "Mediterranean Sea", "Amount": 23150 },
+  {"Entity": "North Atlantic", "Amount": 56470 },
+  {"Entity": "North Pacific", "Amount": 96400 },
+  {"Entity": "South Atlantic", "Amount": 12780 },
+  {"Entity": "South Pacific", "Amount": 21020 }
+]

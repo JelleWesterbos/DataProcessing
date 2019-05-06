@@ -1,9 +1,6 @@
 #!/usr/bin/env python
 # Name: Jelle Westerbos
 # Student number: 10755470
-# maak nieuwe dict aan voor je data
-# sum van alles delen door de lengte die je uit nieuwe dict haalt
-
 
 """
 This script visualizes data obtained from a .csv file
