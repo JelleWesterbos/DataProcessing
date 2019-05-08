@@ -12,6 +12,6 @@ out = json.dumps( [ row for row in reader ] )
 print ("JSON parsed!")
 
 # Save the JSON
-f = open('plastic-ocean.json', 'w')
+f = open('plastic.json', 'w')
 f.write(out)
 print ("JSON saved!")
